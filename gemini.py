@@ -15,12 +15,11 @@ def get_nutrition(text,display= False):
 
     if display:
         refined_query =refined_query=(f"Calculate the approximate total calories and macronutrient composition for the following list of food items: {text}. "
-                                      f"Provide a general estimate, even if specific details about preparation or type are missing.Display only result calorie of {text} no extra information. Present the results as: calories: [value] kcal, protein: [value] g, carbohydrates: [value] g, fats: [value] g")
+                                      f"Provide a general estimate, even if specific details about preparation or type are missing.Display only result calorie of {text} no extra information. Present the results as: Total calories till now: [value] kcal, protein: [value] g, carbohydrates: [value] g, fats: [value] g")
     else:
-      refined_query=(f"Provide the calorie value and percentage composition of {text}. "
+       refined_query=(f"Provide the calorie value and percentage composition of {text}. "
                      f"if no  quantity or measure provided given average calories value"
-f"Include only numerical values with the units. Dont include any extra text.Present the results as: calories of given food name also give default measure : [value] kcal, protein: [value] g, carbohydrates: [value] g, fats: [value] g.The Result should be SMS formated")
-
+                     f"Include only numerical values with the units. Dont include any extra text.Present the results as: calories of given food name also give default measure as [Food Name] (Default Measure): [calories] kcal, protein: [protein] g, carbs: [carbs] g, fats: [fats] g")
     response = model.generate_content(refined_query)
     text = response.text
     print(text)
