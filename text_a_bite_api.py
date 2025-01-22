@@ -118,9 +118,6 @@ def fetch_data():
                     text = message['text']
                     if "SUBSCRIBE" in text:
                         send_subscribe_message(text, user_id)
-                    elif "Info" in text:
-                        nutrition_value = get_nutrition(text)
-                        send_an_sms(nutrition_value, user_id)
                     elif "Track" in text:
                         if user_id not in user_data:
                             user_data[user_id] = {
