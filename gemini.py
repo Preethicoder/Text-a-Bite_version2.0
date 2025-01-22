@@ -18,7 +18,8 @@ def get_nutrition(text,display= False):
                                       f"Provide a general estimate, even if specific details about preparation or type are missing.Display only result calorie of {text} no extra information. Present the results as: calories: [value] kcal, protein: [value] g, carbohydrates: [value] g, fats: [value] g")
     else:
       refined_query=(f"Provide the calorie value and percentage composition of {text}. "
-f"Include only numerical values with the units. Dont include any extra text.Present the results as: calories: [value] kcal, protein: [value] g, carbohydrates: [value] g, fats: [value] g.The Result should be SMS formated")
+                     f"if no  quantity or measure provided given average calories value"
+f"Include only numerical values with the units. Dont include any extra text.Present the results as: calories of given food name also give default measure : [value] kcal, protein: [value] g, carbohydrates: [value] g, fats: [value] g.The Result should be SMS formated")
 
     response = model.generate_content(refined_query)
     text = response.text
@@ -26,7 +27,7 @@ f"Include only numerical values with the units. Dont include any extra text.Pres
     return response.text
 
 def main():
-    get_nutrition(['Track 1 cup rice', 'Track 1 coffee '],True )
+    get_nutrition('Track rice',False )
 
 if __name__ == "__main__":
     main()

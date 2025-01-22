@@ -117,9 +117,8 @@ def fetch_data():
                 for message in messages:
                     text = message['text']
                     if "SUBSCRIBE" in text:
-                        print("su")
                         send_subscribe_message(text, user_id)
-                    elif "Info" in text:  # "Text-a-Bite 1 cup rice"
+                    elif "Info" in text:
                         nutrition_value = get_nutrition(text)
                         send_an_sms(nutrition_value, user_id)
                     elif "Track" in text:
@@ -133,6 +132,7 @@ def fetch_data():
                         if message not in user_data[user_id]["messages"]:
                             user_data[user_id]["messages"].append(message)
                         nutrition_value = get_nutrition(text)
+                        message = nutrition_value +"\n" + "Calorie of given food is added to Track\n"
                         send_an_sms(nutrition_value, user_id)
                     elif "Display" in text:
                         if user_id in user_data:
@@ -143,7 +143,8 @@ def fetch_data():
                             print(f"No data found for user ID: {user_id}")
                             return []
                     else:
-                        print("")
+                        nutrition_value = get_nutrition(text)
+                        send_an_sms(nutrition_value, user_id)
             # Save the updated user_data to a JSON file
             save_user_data(user_data)
 
