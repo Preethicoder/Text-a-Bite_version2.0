@@ -15,7 +15,7 @@ def get_nutrition(text,display= False):
 
     if display:
         refined_query =refined_query=(f"Calculate the approximate total calories and macronutrient composition for the following list of food items: {text}. "
-                                      f"Provide a general estimate, even if specific details about preparation or type are missing.Display only result calorie of {text} no extra information. Present the results as: Total calories till now: [value] kcal, protein: [value] g, carbohydrates: [value] g, fats: [value] g")
+                                      f"Provide a general estimate, even if specific details about preparation or type are missing . Dont include any extra text. Present the results as: Total calories till now: [value] kcal, protein: [value] g, carbohydrates: [value] g, fats: [value] g")
     else:
        refined_query=(f"Provide the calorie value and percentage composition of {text}. "
                      f"if no  quantity or measure provided given average calories value"
@@ -26,7 +26,7 @@ def get_nutrition(text,display= False):
     return response.text
 
 def main():
-    get_nutrition('Track rice',False )
+    get_nutrition('Track rice',True )
 
 if __name__ == "__main__":
     main()
