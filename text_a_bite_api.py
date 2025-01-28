@@ -27,7 +27,7 @@ def load_user_data():
 
 def send_subscribe_message(user_id):
     """Send a subscription welcome message."""
-    message = "Welcome! Text 'Info/Track/Display qty measure food' to get nutritional value."
+    message = "Welcome! Send a text in the format 'Track | Display qty measure food' to get nutritional info."
     send_an_sms(message, user_id)
 
 
